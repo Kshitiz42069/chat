@@ -1,8 +1,50 @@
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+
 export const signUp = async(req,res)=>{
     try {
-        const {full_name,user_name,password,confirm_password,gender} =req.body
+        const {fullName,username,password,confirmPassword,gender} =req.body;
+
+        if(password !== confirmPassword){
+            return res.status(400).json({error:"passwords do not match"});
+        }
+
+        const user = await User.findOne({username});
+
+        if(user){
+            return res.status(400).json({error:"username already exists"});
+        }
+        //hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password,salt);
+
+        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
+        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
+        const newUser = new User({
+            fullName,
+            username,
+            password:hashedPassword,
+            gender,
+            profilepic: gender=== "male" ? boyProfilePic : girlProfilePic
+        })
+
+        if(newUser){
+            //generate JWT token
+            await newUser.save();
+            res.status(201).json({
+                _id: newUser._id,
+                fullName: newUser.fullName,
+                username: newUser.username,
+                profilepic: newUser.profilepic
+            });
+        }
+        else{
+            res.status(400).json({error:"invalid data"});
+        }
+    
     } catch (error) {
-        console.log(error)
+        res.status(500).json({error:"Internal server error"});
+        console.log(error);
     }
 }
 export const login = (req,res)=>{
