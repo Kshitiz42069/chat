@@ -49,11 +49,35 @@ export const signUp = async(req,res)=>{
         console.log(error);
     }
 }
-export const login = (req,res)=>{
-    res.send("Login");
-    console.log("login user");
+export const login = async(req,res)=>{
+    try {
+        const {username,password} =req.body;
+        const user = await User.findOne({username});
+        const isPasswordCorrect = await bcrypt.compare(password,user?.password || "");
+
+        if(!user || !isPasswordCorrect){
+            return res.status(400).json({error:"invalid credentials"});
+        }
+
+        generateTokenAndSetCookie(user._id,res);
+
+        res.status(200).json({
+            _id:user.id,
+            fullName:user.fullName,
+            username:user.username,
+            profilepic:user.profilepic
+        });
+    } catch (error) {
+        res.status(500).json({error:"Internal login server error"});
+        console.log(error);
+    }
 }
-export const logOut = (req,res)=>{
-    res.send("Login");
-    console.log("logout user");
+export const logOut = async(req,res)=>{
+    try {
+        res.cookie("jwt","",{maxAge:0});
+        res.status(200).json({message:"logged out successfully"});
+    } catch (error) {
+        res.status(500).json({error:"Internal louout server error"});
+        console.log(error);
+    }
 }
