@@ -15,12 +15,14 @@ function Register() {
             <div className='lg:w-1/2 bg-white pt-[4rem] flex flex-col pl-[5rem] pr-[3rem] gap-[2rem]'>
                 <h1 className='text-5xl font-bold text-[#8551FF]'>Sign Up</h1>
                 <p className='font-thin w-[17rem]'>Welcome! Please fill the credentials to create an Account.</p>
-                <form className='flex flex-col gap-[1rem]' action="submit">
+                <form className='flex flex-col gap-[0.5rem]' action="submit">
                     <label className='text-gray-500 p-1' htmlFor="Name">Name</label>
                     <input className='border-2 p-1 outline-none' type="text" placeholder='Enter your name' required/>
                     <label className='text-gray-500 p-1' htmlFor="username">Username</label>
                     <input className='border-2 p-1 outline-none' type="email" placeholder='example@gmail.com' required/>
                     <label className='text-gray-500 p-1' htmlFor="password">Password</label>
+                    <input className='border-2 p-1 outline-none' type="password" placeholder='******' required/>
+                    <label className='text-gray-500 p-1' htmlFor="password">Confirm Password</label>
                     <input className='border-2 p-1 outline-none' type="password" placeholder='******' required/>
                     <button className='submit_button'>Sign Up</button>
                 </form>
