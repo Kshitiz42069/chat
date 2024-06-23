@@ -20,7 +20,7 @@ function Login() {
                     <input className='border-2 p-1 outline-none' type="email" placeholder='example@gmail.com' required/>
                     <label className='text-gray-500 p-1' htmlFor="password">Password</label>
                     <input className='border-2 p-1 outline-none' type="password" placeholder='******' required/>
-                    <button className='submit_button'>Login</button>
+                    <button className='submit_button'><Link to={'/chat'}>Login</Link></button>
                 </form>
                 <Link to={'/register'}>
                     <p className='text-lg'>Have an Account? <button className='text-[#8551FF] font-bold'>Sign up</button></p>
