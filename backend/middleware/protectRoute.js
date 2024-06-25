@@ -1,33 +1,35 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 
-const protectRoute = async(req,res,next) =>{
+const protectRoute = async (req, res, next) => {
     try {
         const token = req.cookies.jwt;
-        if(!token){
-            return res.status(401).json({error:"unauthorized - no token provided"});
+        console.log("Token received:", token); // Add this line for debugging
+
+        if (!token) {
+            return res.status(401).json({ error: "Unauthorized - no token provided" });
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Decoded token:", decoded); // Add this line for debugging
 
-        if(!decoded){
-            return res.status(401).json({error:"unauthorized - invali token provided"});
+        if (!decoded) {
+            return res.status(401).json({ error: "Unauthorized - invalid token provided" });
         }
 
         const user = await User.findById(decoded.userId).select("-password");
 
-        if(!user){
-            return res.status(404).json({error:"user not found"});
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
         }
 
         req.user = user;
-
         next();
 
     } catch (error) {
-        console.log(error.message);
-        res.status(500).json({error:"internal error"});
+        console.log("Error:", error.message); // Add this line for debugging
+        res.status(500).json({ error: "Internal error" });
     }
-}
+};
 
 export default protectRoute;

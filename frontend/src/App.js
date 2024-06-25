@@ -10,17 +10,16 @@ function App() {
   const {authUser} = useAuthContext();
   return (
     <div>
-
       <div className="App">
         <Routes>
-          <Route path='/' element={
-            authUser ? <Navigate to={'/chat'}/> : <Login/>
+          <Route path='/login' element={
+            authUser ? <Navigate to={'/'}/> : <Login/>
           }/>
           <Route path='/register' element={
-            authUser ? <Navigate to={'/chat'}/> : <Register/>
+            authUser ? <Navigate to={'/'}/> : <Register/>
           }/>
-          <Route path='/chat' element={
-            authUser ?  <Chat/> : <Navigate to={'/'}/>
+          <Route path='/' element={
+            authUser ?  <Chat/> : <Navigate to={'/login'}/>
           }/>
         </Routes>
       </div>

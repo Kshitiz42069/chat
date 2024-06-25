@@ -17,7 +17,6 @@ function Chat() {
             <div>
               <Users/>
               <RecentChats/>
-              <RecentChats/>
             </div>
             <Logout/>
           </div>

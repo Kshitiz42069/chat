@@ -27,7 +27,7 @@ function Login() {
                 <p className='font-thin w-[17rem] text-gray-500'>Welcome! Please fill the credentials to Login.</p>
                 <form className='flex flex-col gap-[1rem]' action="submit" onSubmit={handleSubmit}>
                     <label className='text-gray-500 p-1' htmlFor="username">Username</label>
-                    <input className='bg-white text-black border-2 p-1 outline-none' type="email" value={username} onChange={(e)=> setUsername(e.target.value)} placeholder='example@gmail.com' required/>
+                    <input className='bg-white text-black border-2 p-1 outline-none' type="text" value={username} onChange={(e)=> setUsername(e.target.value)} placeholder='example@gmail.com' required/>
                     <label className='text-gray-500 p-1' htmlFor="password">Password</label>
                     <input className='bg-white text-black border-2 p-1 outline-none' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder='******' required/>
                     <button className='submit_button' disabled = {loading}>

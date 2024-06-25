@@ -1,18 +1,15 @@
 import React from 'react'
+import Conversation from './Conversation';
+import useGetConversations from '../../../hooks/UseGetConversations';
 
 function RecentChats() {
+  const {loading,conversations} = useGetConversations();
+  console.log("conversations",conversations);
   return (
-    <div className='py-2 mx-4 flex items-center gap-[0.5rem] border-b-2 border-[#D8B3FE] overflow-auto'>
-        <div className="avatar online">
-            <div className="w-[3rem] rounded-full">
-                <img src="https://randomuser.me/api/portraits/men/62.jpg" alt=''/>
-            </div>
-        </div>
-        <div>
-            <p className='text-lg text-black'>John Doe</p>
-        </div>
+    <div className='py-2 flex flex-col overflow-auto'>
+      <Conversation />
     </div>
-  )
-}
+  );
+};
 
 export default RecentChats
