@@ -14,13 +14,22 @@ dotenv.config();
 const corsOptions = {
     origin: 'http://localhost:3000',
     credentials: true,
+    exposedHeaders: ["Set-Cookie"]
 };
-  
-app.use(cors(corsOptions));
+
 
 const PORT = process.env.PORT || 5000;
-app.use(express.json()); 
 app.use(cookieParser());
+app.use(express.json()); 
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+    console.log('Request received:', req.method, req.url);
+    console.log('Cookies:', req.cookies);
+    next();
+});
+
+
 app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes);
 app.use("/api/users",userRoutes);

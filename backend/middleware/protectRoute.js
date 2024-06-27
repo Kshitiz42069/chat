@@ -4,14 +4,14 @@ import User from "../models/user.model.js";
 const protectRoute = async (req, res, next) => {
     try {
         const token = req.cookies.jwt;
-        console.log("Token received:", token); // Add this line for debugging
+        console.log("Token received:", token);
 
         if (!token) {
             return res.status(401).json({ error: "Unauthorized - no token provided" });
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log("Decoded token:", decoded); // Add this line for debugging
+        console.log("Decoded token:", decoded); 
 
         if (!decoded) {
             return res.status(401).json({ error: "Unauthorized - invalid token provided" });
@@ -27,8 +27,8 @@ const protectRoute = async (req, res, next) => {
         next();
 
     } catch (error) {
-        console.log("Error:", error.message); // Add this line for debugging
-        res.status(500).json({ error: "Internal error" });
+        console.log("Error in protectRoute middleware: ", error.message);
+        res.status(500).json({ error: "Internal system error" });
     }
 };
 

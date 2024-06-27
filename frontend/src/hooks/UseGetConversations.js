@@ -10,11 +10,17 @@ const useGetConversations = () => {
 			setLoading(true);
 			try {
 				const res = await fetch("http://localhost:8000/api/users",{
-                    credentials: 'include' 
+                    method:'GET',
+                    credentials: "include",  // Ensure cookies are sent with the request
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
                 });
+                console.log(res);
 				const data = await res.json();
+                console.log(data)
 				if (data.error) {
-					throw new Error(data.error);
+					throw new Error(data.error || "Failed to fetch conversations");
 				}
 				setConversations(data);
 			} catch (error) {

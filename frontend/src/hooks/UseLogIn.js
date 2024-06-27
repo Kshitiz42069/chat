@@ -25,7 +25,7 @@ function useLogIn() {
             throw new Error(data.error);
         }
 
-        localStorage.removeItem("chat-user", JSON.stringify(data));
+        localStorage.setItem("chat-user", JSON.stringify(data));
         setAuthUser(data);
     } catch (error) {
         toast.error(error.message);

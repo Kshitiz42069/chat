@@ -4,8 +4,8 @@ import useLogIn from '../../hooks/UseLogIn';
 
 function Login() {
 
-    const [username,setUsername] = useState('');
-    const [password,setPassword] = useState('');
+    const [username,setUsername] = useState('rem@gmail.com');
+    const [password,setPassword] = useState('12345678');
     const {loading , login} = useLogIn();
 
     const handleSubmit = async(e) =>{
