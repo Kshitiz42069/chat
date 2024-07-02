@@ -1,7 +1,7 @@
 const Conversation = ({conversation, lastIdx}) => {
     	return (
     		<>
-    			<div className='flex gap-4 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer'>
+    			<div className='group flex gap-4 items-center hover:bg-purple-300 rounded p-2 py-1 cursor-pointer'>
     				<div className='avatar online'>
     					<div className='w-12 rounded-full'>
     						<img
@@ -13,7 +13,7 @@ const Conversation = ({conversation, lastIdx}) => {
     
     				<div className='flex flex-col flex-1'>
     					<div className='flex gap-3 justify-between'>
-    						<p className='font-bold text-black'>{conversation.fullName}</p>
+    						<p className=' group-hover:text-white font-bold text-black'>{conversation.fullName}</p>
     					</div>
     				</div>
     			</div>

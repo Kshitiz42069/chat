@@ -11,7 +11,7 @@ const useGetConversations = () => {
 			try {
 				const res = await fetch("http://localhost:8000/api/users",{
                     method:'GET',
-                    credentials: "include",  // Ensure cookies are sent with the request
+                    credentials: 'include',  // Ensure cookies are sent with the request
                     headers: {
                         "Content-Type": "application/json"
                     }
