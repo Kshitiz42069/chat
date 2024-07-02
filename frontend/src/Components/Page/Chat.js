@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Users from './Sidebar/Search'
 import Logout from './Sidebar/Logout'
 import Top from './Conversation/Top'
 import Conversations from './Conversation/Conversations'
 import RecentChats from './Sidebar/RecentChats'
 import SendMessage from './Conversation/SendMessage'
+import useConversation from '../../zustand/useConversation'
 
 
 function Chat() {
-  const noChatSelected = false;
+  const {selectedConversation, setSelectedConversation}= useConversation();
+  useEffect(()=>{
+
+    //cleanup funtion
+    return () => setSelectedConversation(null)
+  },[setSelectedConversation])
   return (
     <div className='flex items-center justify-center py-[2.5rem] bg-[#F1DFF7]'>
       <div className='flex lg:w-2/3 h-[90vh] overflow-hidden rounded-xl'>
@@ -22,7 +28,7 @@ function Chat() {
           </div>
           {/* coversation  */}
           <div className='w-2/3 bg-purple-300'>
-           {noChatSelected ? <NoChatSelected/> : (
+           {!selectedConversation ? <NoChatSelected/> : (
             <div>
               <Top/>
               <Conversations/>
