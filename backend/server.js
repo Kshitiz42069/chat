@@ -14,7 +14,6 @@ const app = express();
 const corsOptions = {
     origin: true,
     credentials: true, // Allows cookies to be sent
-    exposedHeaders: ["Set-Cookie"] // Exposes Set-Cookie header
 };
 
 app.use(cookieParser());

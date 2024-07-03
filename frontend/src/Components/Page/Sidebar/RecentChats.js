@@ -4,7 +4,6 @@ import useGetConversations from '../../../hooks/UseGetConversations';
 
 function RecentChats() {
   const {loading,conversations} = useGetConversations();
-  console.log("conversations:",conversations);
   return (
     <div className='py-2 flex flex-col h-[35.5rem] overflow-auto'>
 
