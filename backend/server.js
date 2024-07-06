@@ -6,10 +6,11 @@ import authRoutes from "./Routes/auth.route.js";
 import messageRoutes from "./Routes/message.route.js";
 import userRoutes from "./Routes/user.route.js";
 import connectTOMongoDB from "./DB/connectToMongoDB.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
-const app = express();
+
 
 const corsOptions = {
     origin: true,
@@ -38,7 +39,7 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectTOMongoDB();
     console.log(`Server is running on port ${PORT}`);
 });
