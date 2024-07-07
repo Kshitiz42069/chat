@@ -12,7 +12,7 @@ function UseSignUp() {
         
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:8000/api/auth/signup",{
+            const res = await fetch("https://chat-app-production-ybib.onrender.com/api/auth/signup",{
                 method:'POST',
                 headers: {"Content-Type": "application/json"},
                 body:JSON.stringify({fullName,username,password,confirmPassword,gender})

@@ -9,7 +9,7 @@ function UseSendMessage() {
   const sendMessage = async(message)=>{
     setLoading(false);
     try {
-        const res = await fetch(`http://localhost:8000/api/messages/send/${selectedConversation._id}`,{
+        const res = await fetch(`https://chat-app-production-ybib.onrender.com/api/messages/send/${selectedConversation._id}`,{
             method:"POST",
             credentials:"include",
             headers:{

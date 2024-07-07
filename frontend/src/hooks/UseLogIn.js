@@ -13,7 +13,7 @@ function useLogIn() {
     
     setLoading(true);
     try {
-        const res = await fetch("http://localhost:8000/api/auth/login",{
+        const res = await fetch("https://chat-app-production-ybib.onrender.com/api/auth/login",{
             method:'POST',
             credentials: 'include',
             headers: {"Content-Type": "application/json"},
