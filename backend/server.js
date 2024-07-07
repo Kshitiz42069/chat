@@ -16,7 +16,6 @@ dotenv.config();
 
 
 const corsOptions = {
-    origin: true,
     credentials: true, // Allows cookies to be sent
 };
 
