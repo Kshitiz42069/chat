@@ -14,7 +14,7 @@ function Conversations() {
 		}, 100);
 	}, [messages]);
   return (
-    <div className='px-4 py-4 flex-1 h-[36.8rem] overflow-auto'>
+    <div className='px-4 py-4 flex-1 overflow-auto'>
 			{!loading &&
 				messages.length > 0 &&
 				messages.map((message) => (

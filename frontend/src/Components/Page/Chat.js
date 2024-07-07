@@ -19,7 +19,7 @@ function Chat() {
     <div className='flex items-center justify-center py-[2.5rem] bg-[#F1DFF7]'>
       <div className='flex lg:w-2/3 h-[90vh] overflow-hidden rounded-xl'>
           {/* sidebar */}
-          <div className='w-1/3 bg-white flex flex-col justify-between border-r-2'>
+          <div className='w-1/3 h-[90vh] bg-white flex flex-col justify-between border-r-2'>
             <div>
               <Users/>
               <RecentChats/>
@@ -27,9 +27,9 @@ function Chat() {
             <Logout/>
           </div>
           {/* coversation  */}
-          <div className='w-2/3 bg-purple-300'>
+          <div className='w-2/3 h-[90vh] bg-purple-300'>
            {!selectedConversation ? <NoChatSelected/> : (
-            <div>
+            <div className='flex flex-between flex-col h-[90vh]'>
               <Top/>
               <Conversations/>
               <SendMessage/>
