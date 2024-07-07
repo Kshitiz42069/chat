@@ -23,12 +23,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors(corsOptions));
 
-// Middleware to log requests and cookies
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Replace with your frontend domain
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
